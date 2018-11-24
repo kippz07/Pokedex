@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Pokedex.Models
 {
-    public class Entry
+    public class PokedexEntry
     {
         public int Id { get; set; }
         public int PokemonId { get; set; }

@@ -191,6 +191,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PokedexEntryController.cs" />
     <Compile Include="Controllers\PokemonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,11 +204,15 @@
     <Compile Include="Migrations\201811241624514_ChangedPokedexToEntry.Designer.cs">
       <DependentUpon>201811241624514_ChangedPokedexToEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811241633514_ChangedEntryToPokedexEntry.cs" />
+    <Compile Include="Migrations\201811241633514_ChangedEntryToPokedexEntry.Designer.cs">
+      <DependentUpon>201811241633514_ChangedEntryToPokedexEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Entry.cs" />
+    <Compile Include="Models\PokedexEntry.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -274,6 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PokedexEntry\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -296,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811241624514_ChangedPokedexToEntry.resx">
       <DependentUpon>201811241624514_ChangedPokedexToEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241633514_ChangedEntryToPokedexEntry.resx">
+      <DependentUpon>201811241633514_ChangedEntryToPokedexEntry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,7 +20,7 @@ namespace Pokedex.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Entry> Entry { get; set; }
+        public DbSet<PokedexEntry> PokedexEntry { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
