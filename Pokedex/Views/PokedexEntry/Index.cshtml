@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Pokedex.Models.PokedexEntry>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Pokedex</h2>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    @foreach (var pokemon in Model)
+    {
+        <tr>
+            <th>@pokemon.PokemonId</th>
+            <th>@pokemon.Name</th>
+        </tr>
+    }
+</table>

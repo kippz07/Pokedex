@@ -276,10 +276,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Pokemon\Index.cshtml" />
     <Content Include="Views\Pokemon\Details.cshtml" />
+    <Content Include="Views\PokedexEntry\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\PokedexEntry\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
