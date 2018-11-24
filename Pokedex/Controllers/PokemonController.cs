@@ -26,9 +26,9 @@ namespace Pokedex.Controllers
             return View(pokemon);
         }
 
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            var pokemon = GetPokemonList().SingleOrDefault(p => p.PokemonId == id);
+            var pokemon = await PokeApiGetPokemon.GetAsyncPokemon(id);
 
             if (pokemon == null)
                 return HttpNotFound();
