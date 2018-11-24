@@ -11,3 +11,7 @@
     <li>In Pokedex: @Model.IsInPokedex</li>
 </ul>
 
+@using (Html.BeginForm("Add", "Pokemon"))
+{
+    <button type="submit" class="btn btn-primary">Add to Pokedex</button>
+}

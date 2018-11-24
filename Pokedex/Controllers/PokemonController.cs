@@ -9,6 +9,13 @@ namespace Pokedex.Controllers
 {
     public class PokemonController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public PokemonController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         // GET: Pokemon
         public ActionResult Index()
         {
@@ -25,6 +32,16 @@ namespace Pokedex.Controllers
                 return HttpNotFound();
 
             return View(pokemon);
+        }
+
+        [HttpPost]
+        public ActionResult Add(Pokemon pokemon)
+        {
+            Entry entry = new Entry() { PokemonId = pokemon.Id, Name = pokemon.Name };
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Pokemon");
         }
 
         public IEnumerable<Pokemon> GetPokemonList()

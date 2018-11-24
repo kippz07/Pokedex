@@ -199,11 +199,15 @@
     <Compile Include="Migrations\201811241531402_InitialMigration.Designer.cs">
       <DependentUpon>201811241531402_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811241624514_ChangedPokedexToEntry.cs" />
+    <Compile Include="Migrations\201811241624514_ChangedPokedexToEntry.Designer.cs">
+      <DependentUpon>201811241624514_ChangedPokedexToEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Pokedex.cs" />
+    <Compile Include="Models\Entry.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -289,6 +293,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811241531402_InitialMigration.resx">
       <DependentUpon>201811241531402_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241624514_ChangedPokedexToEntry.resx">
+      <DependentUpon>201811241624514_ChangedPokedexToEntry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
