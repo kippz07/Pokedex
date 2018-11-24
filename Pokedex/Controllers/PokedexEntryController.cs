@@ -23,5 +23,12 @@ namespace Pokedex.Controllers
 
             return View(entries);
         }
+
+        public ActionResult Details(int id)
+        {
+            var entry = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == id);
+
+            return View(entry);
+        }
     }
 }

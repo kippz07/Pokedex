@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
+using System.Threading.Tasks;
 using Pokedex.Models;
 
 namespace Pokedex.Controllers
@@ -18,9 +19,9 @@ namespace Pokedex.Controllers
         }
 
         // GET: Pokemon
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var pokemon = GetPokemonList();
+            var pokemon = await PokeApiGetPokemon.GetAsyncPokemonList();
 
             return View(pokemon);
         }
@@ -93,8 +94,7 @@ namespace Pokedex.Controllers
                     Name = "Squirtle",
                     IsInPokedex = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == 3) != null ? true : false
                 }
-            };
-            
+            };          
         }
     }
 }

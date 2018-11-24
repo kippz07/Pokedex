@@ -21,7 +21,7 @@ else
         {
             <tr>
                 <th>@pokemon.PokemonId</th>
-                <th>@pokemon.Name</th>
+                <th>@Html.ActionLink(@pokemon.Name, "Details", "PokedexEntry", new { id = pokemon.PokemonId }, null)</th>
             </tr>
         }
     </table>

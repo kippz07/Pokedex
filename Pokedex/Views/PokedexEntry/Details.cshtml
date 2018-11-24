@@ -1,0 +1,12 @@
+﻿@model Pokedex.Models.PokedexEntry
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<ul>
+    <li>ID: @Model.PokemonId</li>
+    <li>Name: @Model.Name</li>
+</ul>
