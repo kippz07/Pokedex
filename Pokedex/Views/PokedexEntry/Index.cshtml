@@ -6,16 +6,23 @@
 
 <h2>Your Pokedex</h2>
 
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-    </tr>
-    @foreach (var pokemon in Model)
-    {
+@if (!Model.Any())
+{
+    <p>You have no Pokemon in your Pokedex!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
         <tr>
-            <th>@pokemon.PokemonId</th>
-            <th>@pokemon.Name</th>
+            <th>Id</th>
+            <th>Name</th>
         </tr>
-    }
-</table>
+        @foreach (var pokemon in Model)
+        {
+            <tr>
+                <th>@pokemon.PokemonId</th>
+                <th>@pokemon.Name</th>
+            </tr>
+        }
+    </table>
+}

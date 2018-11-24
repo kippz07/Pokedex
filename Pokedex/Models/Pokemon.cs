@@ -7,7 +7,7 @@ namespace Pokedex.Models
 {
     public class Pokemon
     {
-        public int Id { get; set; }
+        public int PokemonId { get; set; }
         public string Name { get; set; }
         public bool IsInPokedex { get; set; }
     }

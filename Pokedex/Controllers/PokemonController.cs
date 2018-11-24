@@ -27,7 +27,7 @@ namespace Pokedex.Controllers
 
         public ActionResult Details(int id)
         {
-            var pokemon = GetPokemonList().SingleOrDefault(p => p.Id == id);
+            var pokemon = GetPokemonList().SingleOrDefault(p => p.PokemonId == id);
 
             if (pokemon == null)
                 return HttpNotFound();
@@ -38,7 +38,7 @@ namespace Pokedex.Controllers
         [HttpPost]
         public ActionResult Add(Pokemon pokemon)
         {
-            PokedexEntry entry = new PokedexEntry() { PokemonId = pokemon.Id, Name = pokemon.Name };
+            PokedexEntry entry = new PokedexEntry() { PokemonId = pokemon.PokemonId, Name = pokemon.Name };
 
             _context.PokedexEntry.Add(entry);
             _context.SaveChanges();
@@ -46,14 +46,14 @@ namespace Pokedex.Controllers
             return RedirectToAction("Index", "Pokemon");
         }
 
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Pokemon pokemon)
         {
-            if (id == null)
+            if (pokemon == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            PokedexEntry entry = _context.PokedexEntry.Find(id);
+            PokedexEntry entry = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == pokemon.PokemonId);
             if (entry == null)
             {
                 return HttpNotFound();
@@ -62,9 +62,9 @@ namespace Pokedex.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Pokemon pokemon)
         {
-            var entry = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == 1);
+            var entry = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == pokemon.PokemonId);
             _context.PokedexEntry.Remove(entry);
             _context.SaveChanges();
 
@@ -77,19 +77,19 @@ namespace Pokedex.Controllers
             {
                 new Pokemon()
                 {
-                    Id = 1,
+                    PokemonId = 1,
                     Name = "Bulbsaur",
                     IsInPokedex = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == 1) != null ? true : false
                 },
                 new Pokemon()
                 {
-                    Id = 2,
+                    PokemonId = 2,
                     Name = "Charmander",
                     IsInPokedex = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == 2) != null ? true : false
                 },
                 new Pokemon()
                 {
-                    Id = 3,
+                    PokemonId = 3,
                     Name = "Squirtle",
                     IsInPokedex = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == 3) != null ? true : false
                 }

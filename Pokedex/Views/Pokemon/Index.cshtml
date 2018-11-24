@@ -15,11 +15,11 @@
     <tr>
         @foreach (var pokemon in Model)
         {
-            <tr>
-                <th>@pokemon.Id</th>
-                <th>@Html.ActionLink(pokemon.Name, "Details", "Pokemon", new { id = pokemon.Id }, null)</th>
-                <th>@pokemon.IsInPokedex</th>
-            </tr>
+        <tr>
+            <th>@pokemon.PokemonId</th>
+            <th>@Html.ActionLink(pokemon.Name, "Details", "Pokemon", new { id = pokemon.PokemonId }, null)</th>
+            <th>@pokemon.IsInPokedex</th>
+        </tr>
         }
-    </tr>
+    </tr>       
 </table>

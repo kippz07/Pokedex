@@ -7,7 +7,7 @@
 <h2>@Model.Name</h2>
 
 <ul>
-    <li>ID: @Model.Id</li>
+    <li>ID: @Model.PokemonId</li>
     <li>In Pokedex: @Model.IsInPokedex</li>
 </ul>
 
@@ -15,7 +15,7 @@
 {
     using (Html.BeginForm("Add", "Pokemon"))
     {
-        @Html.HiddenFor(p => p.Id);
+        @Html.HiddenFor(p => p.PokemonId);
         @Html.HiddenFor(p => p.Name);
         <button type="submit" class="btn btn-primary">Add to Pokedex</button>;
     }
@@ -25,7 +25,7 @@ else
     <p>This Pokemon is in your Pokedex!</p>
     using (Html.BeginForm("Delete", "Pokemon"))
     {
-        @Html.HiddenFor(p => p.Id);
+        @Html.HiddenFor(p => p.PokemonId);
         <button type="submit" class="btn btn-danger">Remove from Pokedex</button>
     }
 }
