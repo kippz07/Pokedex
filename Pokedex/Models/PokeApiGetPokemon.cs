@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using Pokedex.Models;
+using System.Web.Mvc;
 
 namespace Pokedex.Models
 {
@@ -32,7 +33,7 @@ namespace Pokedex.Models
             var pokemon = new Pokemon()
             {
                 PokemonId = result.ID,
-                Name = result.Name,
+                Name = char.ToUpper(result.Name[0]) + result.Name.Substring(1),
                 IsInPokedex = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == result.ID) != null ? true : false
             };
 

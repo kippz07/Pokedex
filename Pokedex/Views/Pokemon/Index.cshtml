@@ -12,14 +12,12 @@
         <th>Pokemon</th>
         <th>In Pokedex</th>
     </tr>
-    <tr>
-        @foreach (var pokemon in Model)
-        {
+    @foreach (var pokemon in Model)
+    {
         <tr>
             <th>@pokemon.PokemonId</th>
             <th>@Html.ActionLink(pokemon.Name, "Details", "Pokemon", new { id = pokemon.PokemonId }, null)</th>
             <th>@pokemon.IsInPokedex</th>
         </tr>
-        }
-    </tr>       
+    }
 </table>

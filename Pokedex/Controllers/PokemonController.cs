@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Net;
 using System.Threading.Tasks;
 using Pokedex.Models;
+using System.Web.UI;
 
 namespace Pokedex.Controllers
 {
@@ -19,6 +20,7 @@ namespace Pokedex.Controllers
         }
 
         // GET: Pokemon
+        [OutputCache(CacheProfile = "Cache1Hour")]
         public async Task<ActionResult> Index()
         {
             var pokemon = await PokeApiGetPokemon.GetAsyncPokemonList();
@@ -26,6 +28,7 @@ namespace Pokedex.Controllers
             return View(pokemon);
         }
 
+        [OutputCache(Duration = 3600, VaryByParam = "id")]
         public async Task<ActionResult> Details(int id)
         {
             var pokemon = await PokeApiGetPokemon.GetAsyncPokemon(id);
@@ -44,7 +47,10 @@ namespace Pokedex.Controllers
             _context.PokedexEntry.Add(entry);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Pokemon");
+            HttpResponse.RemoveOutputCacheItem("/");
+            HttpResponse.RemoveOutputCacheItem(Url.Action("Details", "Pokemon", new { id = pokemon.PokemonId }));
+
+            return RedirectToAction("Edit", "PokedexEntry", new { id = pokemon.PokemonId });
         }
 
         public ActionResult Delete(Pokemon pokemon)
@@ -68,6 +74,9 @@ namespace Pokedex.Controllers
             var entry = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == pokemon.PokemonId);
             _context.PokedexEntry.Remove(entry);
             _context.SaveChanges();
+
+            HttpResponse.RemoveOutputCacheItem("/");
+            HttpResponse.RemoveOutputCacheItem(Url.Action("Details", "Pokemon", new { id = pokemon.PokemonId }));
 
             return RedirectToAction("Index", "Pokemon");
         }

@@ -1,0 +1,38 @@
+﻿@model Pokedex.Models.PokedexEntry
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customise your @Model.Name</h2>
+
+@using (Html.BeginForm("Save", "PokedexEntry"))
+{
+    <div class="form-group">
+        @Html.LabelFor(p => p.Nickname)
+        @Html.TextBoxFor(p => p.Nickname)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Move1)
+        @Html.TextBoxFor(p => p.Move1)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Move2)
+        @Html.TextBoxFor(p => p.Move2)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Move3)
+        @Html.TextBoxFor(p => p.Move3)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Move4)
+        @Html.TextBoxFor(p => p.Move4)
+    </div>
+    @Html.HiddenFor(p => p.Id);
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Return to Pokedex", "Index", "PokedexEntry", new { @class = "btn btn-danger" });
+}

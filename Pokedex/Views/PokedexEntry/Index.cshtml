@@ -21,7 +21,8 @@ else
         {
             <tr>
                 <th>@pokemon.PokemonId</th>
-                <th>@Html.ActionLink(@pokemon.Name, "Details", "PokedexEntry", new { id = pokemon.PokemonId }, null)</th>
+                <th>@Html.ActionLink(!String.IsNullOrWhiteSpace(@pokemon.Nickname) ? @pokemon.Nickname + " (" + @pokemon.Name + ")" : @pokemon.Name, "Details", "PokedexEntry", new { id = pokemon.PokemonId }, null)</th>
+                <th>@Html.ActionLink("Customise", "Edit", "PokedexEntry", new { id = pokemon.PokemonId }, new { @class = "btn btn-primary" })</th>
             </tr>
         }
     </table>
