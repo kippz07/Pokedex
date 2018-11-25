@@ -6,7 +6,16 @@
 
 <h2>Browse Pokemon</h2>
 
-<table class="table table-bordered table-hover">
+@Html.ActionLink("Gen 1", "Index", "Pokemon", new { page = 0 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 2", "Index", "Pokemon", new { page = 30 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 3", "Index", "Pokemon", new { page = 50 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 4", "Index", "Pokemon", new { page = 77 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 5", "Index", "Pokemon", new { page = 98 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 6", "Index", "Pokemon", new { page = 129 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 7", "Index", "Pokemon", new { page = 144 }, new { @class = "btn btn-primary" })
+
+
+<table class="table table-bordered table-hover" id="extra-top">
     <tr>
         <th>Id</th>
         <th>Pokemon</th>
