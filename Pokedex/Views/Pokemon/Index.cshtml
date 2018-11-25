@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Browse Pokemon</h2>
 
 <table class="table table-bordered table-hover">
     <tr>
@@ -21,3 +21,9 @@
         </tr>
     }
 </table>
+@if (Model.First().PokemonId / 5 != 0)
+{
+    @Html.ActionLink("Previous page", "Index", "Pokemon", new { page = Model.First().PokemonId / 5 - 1 }, new { @class = "btn btn-danger" })
+}
+
+@Html.ActionLink("Next page", "Index", "Pokemon", new { page = Model.First().PokemonId / 5 + 1 }, new { @class = "btn btn-primary" })

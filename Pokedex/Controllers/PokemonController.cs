@@ -21,9 +21,9 @@ namespace Pokedex.Controllers
 
         // GET: Pokemon
         [OutputCache(CacheProfile = "Cache1Hour")]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int page = 0)
         {
-            var pokemon = await PokeApiGetPokemon.GetAsyncPokemonList();
+            var pokemon = await PokeApiGetPokemon.GetAsyncPokemonList(page);
 
             return View(pokemon);
         }

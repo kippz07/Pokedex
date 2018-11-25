@@ -12,15 +12,16 @@ namespace Pokedex.Models
     {
         private static ApplicationDbContext _context;
 
-        public static async Task<List<Pokemon>> GetAsyncPokemonList()
+        public static async Task<List<Pokemon>> GetAsyncPokemonList(int page)
         {
+            page *= 5;
             return new List<Pokemon>
             {
-                await GetAsyncPokemon(1),
-                await GetAsyncPokemon(2),
-                await GetAsyncPokemon(3),
-                await GetAsyncPokemon(4),
-                await GetAsyncPokemon(5)
+                await GetAsyncPokemon(page + 1),
+                await GetAsyncPokemon(page + 2),
+                await GetAsyncPokemon(page + 3),
+                await GetAsyncPokemon(page + 4),
+                await GetAsyncPokemon(page + 5)
             };
         }
 
