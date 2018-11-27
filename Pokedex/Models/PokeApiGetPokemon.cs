@@ -25,18 +25,31 @@ namespace Pokedex.Models
             };
         }
 
-        public static async Task<IEnumerable<Pokemon>> GetGenerationListAsync(int gen)
+        private static Dictionary<int, int> genList = new Dictionary<int, int>()
         {
-            var result = await PokeAPI.DataFetcher.GetApiObject<PokeAPI.Generation>(1);
+            { 1, 0 },
+            { 2, 151 },
+            { 3, 251 },
+            { 4, 386 },
+            { 5, 493 },
+            { 6, 649 },
+            { 7, 721 }
+        };
+
+        public static async Task<IEnumerable<Pokemon>> GetGenerationListAsync(int gen, int page, int pageSize)
+        {
+            var result = await PokeAPI.DataFetcher.GetApiObject<PokeAPI.Generation>(gen);
             var speciesList = new List<Pokemon>();
+
             foreach (var species in result.Species)
             {
                 // "http://pokeapi.co/api/v2/pokemon-species/2/"
                 var id = Int32.Parse(species.Url.ToString().Split('/')[6]);
                 var name = char.ToUpper(species.Name[0]) + species.Name.Substring(1);
-                speciesList.Add(new Pokemon() { PokemonId = 1, Name = species.Name });
+                speciesList.Add(new Pokemon() { PokemonId = id, Name = name });
             }
-            return speciesList;
+
+            return speciesList.Where(p => ((p.PokemonId - genList[gen] > page * pageSize) && (p.PokemonId - genList[gen] <= page * pageSize + pageSize))).OrderBy(p => p.PokemonId);
         }
 
         public static async Task<Pokemon> GetAsyncPokemon(int pokemonId)

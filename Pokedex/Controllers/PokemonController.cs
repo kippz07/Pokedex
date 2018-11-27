@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Net;
 using System.Threading.Tasks;
 using Pokedex.Models;
+using Pokedex.ViewModels;
 using System.Web.UI;
 
 namespace Pokedex.Controllers
@@ -21,12 +22,20 @@ namespace Pokedex.Controllers
 
         // GET: Pokemon
         [OutputCache(CacheProfile = "Cache1Hour")]
-        public async Task<ActionResult> Index(int page = 0)
+        public async Task<ActionResult> Index(int gen = 1,int page = 0)
         {
-            var pokemon = await PokeApiGetPokemon.GetGenerationListAsync(1);
-            //var pokemon = await PokeApiGetPokemon.GetAsyncPokemonList(page);
+            var pageSize = 10;
+            var pokemon = await PokeApiGetPokemon.GetGenerationListAsync(gen, page, pageSize);
 
-            return View(pokemon);
+            var viewModel = new PokemonIndexViewModel()
+            {
+                Pokemon = pokemon,
+                Gen = gen,
+                Page = page,
+                PageSize = pageSize
+            };
+
+            return View(viewModel);
         }
 
         [OutputCache(Duration = 3600, VaryByParam = "id")]

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Pokedex.Models.Pokemon>
+﻿@model Pokedex.ViewModels.PokemonIndexViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,13 +6,13 @@
 
 <h2>Browse Pokemon</h2>
 
-@Html.ActionLink("Gen 1", "Index", "Pokemon", new { page = 0 }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Gen 2", "Index", "Pokemon", new { page = 30 }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Gen 3", "Index", "Pokemon", new { page = 50 }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Gen 4", "Index", "Pokemon", new { page = 77 }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Gen 5", "Index", "Pokemon", new { page = 98 }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Gen 6", "Index", "Pokemon", new { page = 129 }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Gen 7", "Index", "Pokemon", new { page = 144 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 1", "Index", "Pokemon", new { gen = 1, page = 0 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 2", "Index", "Pokemon", new { gen = 2, page = 0 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 3", "Index", "Pokemon", new { gen = 3, page = 0 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 4", "Index", "Pokemon", new { gen = 4, page = 0 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 5", "Index", "Pokemon", new { gen = 5, page = 0 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 6", "Index", "Pokemon", new { gen = 6, page = 0 }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Gen 7", "Index", "Pokemon", new { gen = 7, page = 0 }, new { @class = "btn btn-primary" })
 
 
 <table class="table table-bordered table-hover" id="extra-top">
@@ -21,7 +21,7 @@
         <th>Pokemon</th>
         <th>In Pokedex</th>
     </tr>
-    @foreach (var pokemon in Model)
+    @foreach (var pokemon in Model.Pokemon)
     {
         <tr>
             <th>@pokemon.PokemonId</th>
@@ -30,9 +30,16 @@
         </tr>
     }
 </table>
-@if (Model.First().PokemonId / 5 != 0)
+@if (Model.Page != 0)
 {
-    @Html.ActionLink("Previous page", "Index", "Pokemon", new { page = Model.First().PokemonId / 5 - 1 }, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Previous page", "Index", "Pokemon", new { gen = Model.Gen, page = Model.Page - 1 }, new { @class = "btn btn-danger" })
 }
 
-@Html.ActionLink("Next page", "Index", "Pokemon", new { page = Model.First().PokemonId / 5 + 1 }, new { @class = "btn btn-primary" })
+@if (Model.Pokemon.Count() == Model.PageSize)
+{
+    @Html.ActionLink("Next page", "Index", "Pokemon", new { gen = Model.Gen, page = Model.Page + 1 }, new { @class = "btn btn-primary" })
+}
+else
+{
+    @Html.ActionLink("Next gen", "Index", "Pokemon", new { gen = Model.Gen + 1, page = 0 }, new { @class = "btn btn-primary" })
+}
