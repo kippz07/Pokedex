@@ -10,5 +10,7 @@ namespace Pokedex.Models
         public int PokemonId { get; set; }
         public string Name { get; set; }
         public bool IsInPokedex { get; set; }
+        public List<Stat> Types { get; set; }
+        public List<Stat> Moves { get; set; }
     }
 }

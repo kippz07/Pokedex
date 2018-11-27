@@ -227,6 +227,7 @@
     <Compile Include="Models\PokeApiGetPokemon.cs" />
     <Compile Include="Models\PokedexEntry.cs" />
     <Compile Include="Models\Pokemon.cs" />
+    <Compile Include="Models\Stat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
