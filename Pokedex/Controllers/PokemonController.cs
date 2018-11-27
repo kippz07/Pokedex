@@ -41,7 +41,7 @@ namespace Pokedex.Controllers
         [OutputCache(Duration = 3600, VaryByParam = "id")]
         public async Task<ActionResult> Details(int id)
         {
-            var pokemon = await PokeApiGetPokemon.GetAsyncPokemon(id);
+            var pokemon = await PokeApiGetPokemon.GetPokemonAsync(id);
 
             if (pokemon == null)
                 return HttpNotFound();

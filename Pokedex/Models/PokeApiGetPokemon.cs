@@ -12,19 +12,6 @@ namespace Pokedex.Models
     {
         private static ApplicationDbContext _context;
 
-        public static async Task<List<Pokemon>> GetAsyncPokemonList(int page)
-        {
-            page *= 5;
-            return new List<Pokemon>
-            {
-                await GetAsyncPokemon(page + 1),
-                await GetAsyncPokemon(page + 2),
-                await GetAsyncPokemon(page + 3),
-                await GetAsyncPokemon(page + 4),
-                await GetAsyncPokemon(page + 5)
-            };
-        }
-
         private static Dictionary<int, int> genList = new Dictionary<int, int>()
         {
             { 1, 0 },
@@ -52,7 +39,7 @@ namespace Pokedex.Models
             return speciesList.Where(p => ((p.PokemonId - genList[gen] > page * pageSize) && (p.PokemonId - genList[gen] <= page * pageSize + pageSize))).OrderBy(p => p.PokemonId);
         }
 
-        public static async Task<Pokemon> GetAsyncPokemon(int pokemonId)
+        public static async Task<Pokemon> GetPokemonAsync(int pokemonId)
         {
             _context = new ApplicationDbContext();
 
