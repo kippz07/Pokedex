@@ -219,6 +219,14 @@
     <Compile Include="Migrations\201811251353273_AddedNicknameAndMoves.Designer.cs">
       <DependentUpon>201811251353273_AddedNicknameAndMoves.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812031110252_AddedMoveIds.cs" />
+    <Compile Include="Migrations\201812031110252_AddedMoveIds.Designer.cs">
+      <DependentUpon>201812031110252_AddedMoveIds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812031135553_ChangedMoveToTypeStat.cs" />
+    <Compile Include="Migrations\201812031135553_ChangedMoveToTypeStat.Designer.cs">
+      <DependentUpon>201812031135553_ChangedMoveToTypeStat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HttpClientGetPokemon.cs" />
@@ -330,6 +338,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811251353273_AddedNicknameAndMoves.resx">
       <DependentUpon>201811251353273_AddedNicknameAndMoves.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812031110252_AddedMoveIds.resx">
+      <DependentUpon>201812031110252_AddedMoveIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812031135553_ChangedMoveToTypeStat.resx">
+      <DependentUpon>201812031135553_ChangedMoveToTypeStat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

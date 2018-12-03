@@ -16,15 +16,19 @@ namespace Pokedex.Models
         public string Nickname { get; set; }
 
         [Display(Name = "Move 1")]
-        public string Move1 { get; set; }
+        public int? Move1Id { get; set; }
+        public Stat Move1 { get; set; }
 
         [Display(Name = "Move 2")]
-        public string Move2 { get; set; }
+        public int? Move2Id { get; set; }
+        public Stat Move2 { get; set; }
 
         [Display(Name = "Move 3")]
-        public string Move3 { get; set; }
+        public int? Move3Id { get; set; }
+        public Stat Move3 { get; set; }
 
         [Display(Name = "Move 4")]
-        public string Move4  { get; set; }
+        public int? Move4Id  { get; set; }
+        public Stat Move4  { get; set; }
     }
 }
