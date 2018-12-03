@@ -227,6 +227,14 @@
     <Compile Include="Migrations\201812031135553_ChangedMoveToTypeStat.Designer.cs">
       <DependentUpon>201812031135553_ChangedMoveToTypeStat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812032008202_ChangedStatToString.cs" />
+    <Compile Include="Migrations\201812032008202_ChangedStatToString.Designer.cs">
+      <DependentUpon>201812032008202_ChangedStatToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812032014001_RemovedMoveId.cs" />
+    <Compile Include="Migrations\201812032014001_RemovedMoveId.Designer.cs">
+      <DependentUpon>201812032014001_RemovedMoveId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HttpClientGetPokemon.cs" />
@@ -248,6 +256,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -345,6 +354,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812031135553_ChangedMoveToTypeStat.resx">
       <DependentUpon>201812031135553_ChangedMoveToTypeStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812032008202_ChangedStatToString.resx">
+      <DependentUpon>201812032008202_ChangedStatToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812032014001_RemovedMoveId.resx">
+      <DependentUpon>201812032014001_RemovedMoveId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

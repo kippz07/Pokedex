@@ -26,3 +26,17 @@ textarea {
 #extra-top {
     margin-top: 20px;
 }
+
+#pokedex-heading {
+    display: inline-block;
+}
+
+#details-toggle {
+    margin-bottom: 10px;
+    margin-left: 25px;
+}
+
+th ul li {
+    display: inline-block;
+    margin-right: 20%;
+}

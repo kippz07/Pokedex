@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Your Pokedex</h2>
+<h2 id="pokedex-heading">Your Pokedex</h2>
+<p class="btn btn-success" id="details-toggle">Show/Hide Details</p>
 
 @if (!Model.Any())
 {
@@ -21,8 +22,39 @@ else
         {
             <tr>
                 <th>@pokemon.PokemonId</th>
-                <th>@Html.ActionLink(!String.IsNullOrWhiteSpace(@pokemon.Nickname) ? @pokemon.Nickname + " (" + @pokemon.Name + ")" : @pokemon.Name, "Details", "PokedexEntry", new { id = pokemon.PokemonId }, null)</th>
+                <th class="poke-name">@Html.ActionLink(!String.IsNullOrWhiteSpace(@pokemon.Nickname) ? @pokemon.Nickname + " (" + @pokemon.Name + ")" : @pokemon.Name, "Details", "PokedexEntry", new { id = pokemon.PokemonId }, null)</th>
                 <th>@Html.ActionLink("Customise", "Edit", "PokedexEntry", new { id = pokemon.PokemonId }, new { @class = "btn btn-primary" })</th>
+            </tr>
+            <tr class="poke-details">
+                <th></th>
+                <th>
+                    @if (pokemon.Move1.IsEmpty() && pokemon.Move2.IsEmpty() && pokemon.Move3.IsEmpty() && pokemon.Move4.IsEmpty())
+                    {
+                        <p>No Moves have been added for this Pokemon!</p>
+                    }
+                    <ul>
+                        @if (!pokemon.Move1.IsEmpty())
+                        {
+                            <li>@pokemon.Move1</li>
+                        }
+
+                        @if (!pokemon.Move2.IsEmpty())
+                        {
+                            <li>@pokemon.Move2</li>
+                        }
+
+                        @if (!pokemon.Move3.IsEmpty())
+                        {
+                            <li>@pokemon.Move3</li>
+                        }
+
+                        @if (!pokemon.Move4.IsEmpty())
+                        {
+                            <li>@pokemon.Move4</li>
+                        }
+                    </ul>
+                </th>
+                <th></th>
             </tr>
         }
     </table>

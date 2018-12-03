@@ -10,3 +10,32 @@
     <li>ID: @Model.PokemonId</li>
     <li>Name: @Model.Name</li>
 </ul>
+
+<h3>Moves</h3>
+
+@if (Model.Move1.IsEmpty() && Model.Move2.IsEmpty() && Model.Move3.IsEmpty() && Model.Move4.IsEmpty())
+{
+    <p>No Moves have been added for this Pokemon!</p>
+}
+
+<ul>
+    @if (!Model.Move1.IsEmpty())
+    {
+        <li>@Model.Move1</li>
+    }
+
+    @if (!Model.Move2.IsEmpty())
+    {
+        <li>@Model.Move2</li>
+    }
+
+    @if (!Model.Move3.IsEmpty())
+    {
+        <li>@Model.Move3</li>
+    }
+
+    @if (!Model.Move4.IsEmpty())
+    {
+        <li>@Model.Move4</li>
+    }
+</ul>

@@ -1,0 +1,24 @@
+namespace Pokedex.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class RemovedMoveId : DbMigration
+    {
+        public override void Up()
+        {
+            DropColumn("dbo.PokedexEntries", "Move1Id");
+            DropColumn("dbo.PokedexEntries", "Move2Id");
+            DropColumn("dbo.PokedexEntries", "Move3Id");
+            DropColumn("dbo.PokedexEntries", "Move4Id");
+        }
+        
+        public override void Down()
+        {
+            AddColumn("dbo.PokedexEntries", "Move4Id", c => c.Int());
+            AddColumn("dbo.PokedexEntries", "Move3Id", c => c.Int());
+            AddColumn("dbo.PokedexEntries", "Move2Id", c => c.Int());
+            AddColumn("dbo.PokedexEntries", "Move1Id", c => c.Int());
+        }
+    }
+}

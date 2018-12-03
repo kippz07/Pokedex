@@ -60,10 +60,22 @@ namespace Pokedex.Controllers
             if (entry.Id == 0)
                 return HttpNotFound();
 
-            var dbEntry = _context.PokedexEntry.Single(p => p.PokemonId == entry.Id);
+            var dbEntry = _context.PokedexEntry.Single(p => p.PokemonId == entry.PokemonId);
 
             if (!String.IsNullOrWhiteSpace(entry.Nickname))
                 dbEntry.Nickname = entry.Nickname;
+
+            if (!String.IsNullOrWhiteSpace(entry.Move1))
+                dbEntry.Move1 = entry.Move1;
+
+            if (!String.IsNullOrWhiteSpace(entry.Move2))
+                dbEntry.Move2 = entry.Move2;
+
+            if (!String.IsNullOrWhiteSpace(entry.Move3))
+                dbEntry.Move3 = entry.Move3;
+
+            if (!String.IsNullOrWhiteSpace(entry.Move4))
+                dbEntry.Move4 = entry.Move4;
 
             _context.SaveChanges();
 
