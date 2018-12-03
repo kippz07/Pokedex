@@ -25,6 +25,8 @@ namespace Pokedex.Models
 
         public static async Task<IEnumerable<Pokemon>> GetGenerationListAsync(int gen, int page, int pageSize)
         {
+            _context = new ApplicationDbContext();
+
             var result = await PokeAPI.DataFetcher.GetApiObject<PokeAPI.Generation>(gen);
             var speciesList = new List<Pokemon>();
 
@@ -33,7 +35,8 @@ namespace Pokedex.Models
                 // "http://pokeapi.co/api/v2/pokemon-species/2/"
                 var id = Int32.Parse(species.Url.ToString().Split('/')[6]);
                 var name = char.ToUpper(species.Name[0]) + species.Name.Substring(1);
-                speciesList.Add(new Pokemon() { PokemonId = id, Name = name });
+                var isInPokedex = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == id) != null ? true : false;
+                speciesList.Add(new Pokemon() { PokemonId = id, Name = name, IsInPokedex = isInPokedex });
             }
 
             return speciesList.Where(p => ((p.PokemonId - genList[gen] > page * pageSize) && (p.PokemonId - genList[gen] <= page * pageSize + pageSize))).OrderBy(p => p.PokemonId);
