@@ -22,7 +22,7 @@ namespace Pokedex.Controllers
 
         // GET: Pokemon
         [OutputCache(CacheProfile = "Cache1Hour")]
-        public async Task<ActionResult> Index(int gen = 1,int page = 0)
+        public async Task<ActionResult> Index(int gen = 1, int page = 0)
         {
             var pageSize = 10;
             var pokemon = await PokeApiGetPokemon.GetGenerationListAsync(gen, page, pageSize);

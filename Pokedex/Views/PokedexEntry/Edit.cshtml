@@ -1,38 +1,38 @@
-﻿@model Pokedex.Models.PokedexEntry
+﻿@model Pokedex.ViewModels.EntryEditViewModel
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Customise your @Model.Name</h2>
+<h2>Customise your @Model.Entry.Name</h2>
 
 @using (Html.BeginForm("Save", "PokedexEntry"))
 {
     <div class="form-group">
-        @Html.LabelFor(p => p.Nickname)
-        @Html.TextBoxFor(p => p.Nickname)
+        @Html.LabelFor(p => p.Entry.Nickname)
+        @Html.TextBoxFor(p => p.Entry.Nickname)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Move1)
-        @Html.TextBoxFor(p => p.Move1)
+        @Html.LabelFor(p => p.Entry.Move1Id)
+        @Html.DropDownListFor(p => p.Entry.Move1Id, new SelectList(Model.Pokemon.Moves, "Id", "Name"), "Select Move")
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Move2)
-        @Html.TextBoxFor(p => p.Move2)
+        @Html.LabelFor(p => p.Entry.Move2Id)
+        @Html.DropDownListFor(p => p.Entry.Move2Id, new SelectList(Model.Pokemon.Moves, "Id", "Name"), "Select Move")
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Move3)
-        @Html.TextBoxFor(p => p.Move3)
+        @Html.LabelFor(p => p.Entry.Move3Id)
+        @Html.DropDownListFor(p => p.Entry.Move3Id, new SelectList(Model.Pokemon.Moves, "Id", "Name"), "Select Move")
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Move4)
-        @Html.TextBoxFor(p => p.Move4)
+        @Html.LabelFor(p => p.Entry.Move4Id)
+        @Html.DropDownListFor(p => p.Entry.Move4Id, new SelectList(Model.Pokemon.Moves, "Id", "Name"), "Select Move")
     </div>
-    @Html.HiddenFor(p => p.Id);
+    @Html.HiddenFor(p => p.Entry.Id);
     <button type="submit" class="btn btn-primary">Save</button>
-    @Html.ActionLink("Return to Pokedex", "Index", "PokedexEntry", new { @class = "btn btn-danger" });
+    @Html.ActionLink("Return to Pokemon", "Index", "Pokemon", new { gen = 1, page = 0 }, new { @class = "btn btn-danger" });
 }

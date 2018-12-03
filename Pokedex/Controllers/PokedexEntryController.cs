@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using Pokedex.ViewModels;
 
 namespace Pokedex.Controllers
 {
@@ -31,14 +33,25 @@ namespace Pokedex.Controllers
             return View(entry);
         }
 
-        public ActionResult Edit(int id)
+        //[OutputCache(Duration = 3600, VaryByParam = "id")]
+        public async Task<ActionResult> Edit(int id)
         {
             var entry = _context.PokedexEntry.SingleOrDefault(p => p.PokemonId == id);
+            var pokemon = await PokeApiGetPokemon.GetPokemonAsync(id);
+
+            if (pokemon == null)
+                return HttpNotFound();
 
             if (entry == null)
                 return HttpNotFound();
 
-            return View(entry);
+            var viewModel = new EntryEditViewModel()
+            {
+                Pokemon = pokemon,
+                Entry = entry
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]

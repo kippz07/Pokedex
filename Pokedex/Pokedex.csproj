@@ -238,6 +238,7 @@
     <Compile Include="Models\Stat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\EntryEditViewModel.cs" />
     <Compile Include="ViewModels\PokemonIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
