@@ -4,11 +4,12 @@ $(function () {
 
     $detailsToggle = $('#details-toggle');
     $pokeDetails = $('.poke-details');
+    $pokeName = $('.poke-name');
 
     $pokeDetails.toggle();
 
-    $detailsToggle.click(function (event) {
-        $pokeDetails.toggle();
+    $pokeName.hover(function (event) {
+        $(this).parent('tr').next('tr').toggle();
     })
 
 

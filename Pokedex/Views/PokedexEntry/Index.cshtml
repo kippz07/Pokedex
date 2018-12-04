@@ -5,7 +5,7 @@
 }
 
 <h2 id="pokedex-heading">Your Pokedex</h2>
-<p class="btn btn-success" id="details-toggle">Show/Hide Details</p>
+<p class="btn btn-success" id="details-toggle">Compare</p>
 
 @if (!Model.Any())
 {
@@ -21,9 +21,9 @@ else
         @foreach (var pokemon in Model)
         {
             <tr>
-                <th>@pokemon.PokemonId</th>
+                <th class="table-id">@pokemon.PokemonId</th>
                 <th class="poke-name">@Html.ActionLink(!String.IsNullOrWhiteSpace(@pokemon.Nickname) ? @pokemon.Nickname + " (" + @pokemon.Name + ")" : @pokemon.Name, "Details", "PokedexEntry", new { id = pokemon.PokemonId }, null)</th>
-                <th>@Html.ActionLink("Customise", "Edit", "PokedexEntry", new { id = pokemon.PokemonId }, new { @class = "btn btn-primary" })</th>
+                <th class="table-button">@Html.ActionLink("Customise", "Edit", "PokedexEntry", new { id = pokemon.PokemonId }, new { @class = "btn btn-primary" })</th>
             </tr>
             <tr class="poke-details">
                 <th></th>

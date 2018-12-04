@@ -40,3 +40,12 @@ th ul li {
     display: inline-block;
     margin-right: 20%;
 }
+
+.table-button {
+    width: 20%;
+    text-align: center;
+}
+
+.table-id {
+    width: 10%;
+}
