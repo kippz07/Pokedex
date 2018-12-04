@@ -47,7 +47,6 @@ namespace Pokedex.Models
             _context = new ApplicationDbContext();
 
             var result = await PokeAPI.DataFetcher.GetApiObject<PokeAPI.Pokemon>(pokemonId);
-            var moves = result.Moves;
 
             var pokemon = new Pokemon()
             {

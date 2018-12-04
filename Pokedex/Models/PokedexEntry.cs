@@ -26,5 +26,8 @@ namespace Pokedex.Models
 
         [Display(Name = "Move 4")]
         public string Move4  { get; set; }
+
+        public string Type1 { get; set; }
+        public string Type2 { get; set; }
     }
 }

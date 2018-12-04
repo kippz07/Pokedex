@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201812032014001_RemovedMoveId.Designer.cs">
       <DependentUpon>201812032014001_RemovedMoveId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812041420351_AddedTypes.cs" />
+    <Compile Include="Migrations\201812041420351_AddedTypes.Designer.cs">
+      <DependentUpon>201812041420351_AddedTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HttpClientGetPokemon.cs" />
@@ -360,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812032014001_RemovedMoveId.resx">
       <DependentUpon>201812032014001_RemovedMoveId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812041420351_AddedTypes.resx">
+      <DependentUpon>201812041420351_AddedTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
