@@ -54,6 +54,12 @@ namespace Pokedex.Controllers
         {
             PokedexEntry entry = new PokedexEntry() { PokemonId = pokemon.PokemonId, Name = pokemon.Name };
 
+            if (!String.IsNullOrWhiteSpace(entry.Type1))
+                entry.Type1 = entry.Type1;
+
+            if (!String.IsNullOrWhiteSpace(entry.Type2))
+                entry.Type2 = entry.Type2;
+
             _context.PokedexEntry.Add(entry);
             _context.SaveChanges();
 
